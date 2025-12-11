@@ -2,9 +2,20 @@ services:
   pocketbase:
     image: ghcr.io/onixldlc/pocketbase:latest
     container_name: pocketbase
+    restart: unless-stopped
     ports:
-      - "8090:8090"
+      - "${POCKETBASE_PORT}:${POCKETBASE_PORT}"
     volumes:
       - ./pb_data:/app/pb_data
       - ./pb_public:/app/pb_public
       - ./pb_hooks:/app/pb_hooks
+    environment:
+      PB_HOST: "0.0.0.0"    # optional
+      PB_PORT: "8090"       # optional
+
+      PB_ADMIN_EMAIL: "admin@example.com"   # optional
+      PB_ADMIN_PASSWORD: "password"         # optional
+
+      PB_DATA: "/app/pb_data"      # optional
+      PB_PUBLIC: "/app/pb_public"  # optional
+      PB_HOOKS: "/app/pb_hooks"    # optional
