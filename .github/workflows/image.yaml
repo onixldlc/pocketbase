@@ -22,7 +22,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - name: Determine version
+      - name: Get version
         id: version
         run: |
           VERSION=$(grep -m 1 '^## ' CHANGELOG.md | sed 's/^## //;s/ .*//')
@@ -65,3 +65,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Summary
+        run: |
+          echo "**Image:** \`${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ github.repository }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ needs.get-version.outputs.version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Tags:** \`${{ needs.get-version.outputs.version }}\`, \`latest\`" >> $GITHUB_STEP_SUMMARY
