@@ -5,7 +5,8 @@ on:
     branches: [main, master]
     paths:
       - './**'
-      - './Dockerfile'
+      - 'Dockerfile'
+      - 'entrypoint.sh'
       - 'CHANGELOG.md'
       - '.github/workflows/image.yaml'
   workflow_dispatch:
