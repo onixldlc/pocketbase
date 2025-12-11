@@ -8,6 +8,8 @@ on:
       - './Dockerfile'
       - 'CHANGELOG.md'
       - '.github/workflows/image.yaml'
+  workflow_dispatch:
+    inputs:
 
 permissions:
   contents: read
