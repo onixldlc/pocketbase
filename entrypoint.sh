@@ -6,9 +6,9 @@ PB_PORT=${PB_PORT:-8090}
 PB_ADMIN_EMAIL=${PB_ADMIN_EMAIL:-"admin@admin.com"}
 PB_ADMIN_PASSWORD=${PB_ADMIN_PASSWORD:-"password"}
 
-PB_DATA=${PB_DATA:-"/pb_data"}
-PB_PUBLIC=${PB_PUBLIC:-"/pb_public"}
-PB_HOOKS=${PB_HOOKS:-"/pb_hooks"}
+PB_DATA=${PB_DATA:-"/app/pb_data"}
+PB_PUBLIC=${PB_PUBLIC:-"/app/pb_public"}
+PB_HOOKS=${PB_HOOKS:-"/app/pb_hooks"}
 
 DEFAULT_ARGS="serve --http=${PB_HOST}:${PB_PORT} --dir=${PB_DATA} --publicDir=${PB_PUBLIC} --hooksDir=${PB_HOOKS}"
 if [ $# -eq 0 ]; then
