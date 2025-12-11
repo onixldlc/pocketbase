@@ -22,12 +22,14 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Get version
         id: version
         run: |
           VERSION=$(grep -m 1 '^## ' CHANGELOG.md | sed 's/^## //;s/ .*//')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Determined version: $VERSION"
 
   build:
     runs-on: ubuntu-latest
