@@ -1,8 +1,13 @@
 name: imagebuild
 
 on:
-  pull_request:
   push:
+    branches: [main]
+    paths:
+      - './**'
+      - './Dockerfile'
+      - 'CHANGELOG.md'
+      - '.github/workflows/docker-publish.yml'
 
 permissions:
   contents: read
