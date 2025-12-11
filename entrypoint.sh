@@ -19,7 +19,7 @@ fi
 
 create_superuser() {
     if [ -n "$PB_ADMIN_EMAIL" ] && [ -n "$PB_ADMIN_PASSWORD" ]; then
-        /bin/pocketbase superuser upsert "$PB_ADMIN_EMAIL" "$PB_ADMIN_PASSWORD" --dir=/pb_data
+        /bin/pocketbase superuser upsert "$PB_ADMIN_EMAIL" "$PB_ADMIN_PASSWORD" --dir=${PB_DATA}
     fi
 }
 
@@ -34,7 +34,6 @@ echo "Starting PocketBase with args: '$SERVE_ARGS'"
 echo "Data Path: $PB_DATA"
 echo "Public Path: $PB_PUBLIC"
 echo "Hooks Path: $PB_HOOKS"
-
 
 if [ ! -d "${PB_DATA}/data.db" ]; then
     create_superuser
